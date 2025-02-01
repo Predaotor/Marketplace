@@ -1,0 +1,56 @@
+{% extends 'core/base.html' %}
+{% block title %}{{ item.name }} {% endblock %}
+
+{% block content %}
+
+<div class="grid grid-cols-5 gap-6">
+    <div class="col-span-3">
+        <img src="{{item.image.url}}" class="rounded-xl" width="250" height="250" alt="{{item.name}}">
+    </div>
+    <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
+     <h1 class="mb-6 text-3xl">{{item.name}}</h1>
+     <p class="text-green-600"><strong>Price: </strong>{{item.price}}$</p>
+     <p class="text-gray-500"><strong>Seller: </strong>{{item.created_by}}</p>
+
+{% if item.description %}
+     <p class="text-gray-700"><strong class="text-gray-500">Description:</strong><br>
+        {{item.description}}
+     </p> 
+     {% endif %}
+    
+     {% if can_edit %}
+     <div class="mt-6  p-6  bg-white rounded-xl">
+        <p>This is your item!</p> 
+        <a href="{% url 'item:edit' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Edit</a>
+        <a href="{% url 'item:delete' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl hover:bg-red-700">Delete </a>
+     </div>
+     {% else %}
+     <a href="#" class="inline-block mt-6 px-6 py-3 rounded-xl text-lg font-semibold bg-teal-500 text-white hover:bg-teal-700">Contact Seller</a>
+     {% endif %}
+    </div>
+</div>
+
+    <div class="mt-6 px-4 py-8 bg-gray-100 rounded-xl">
+        <h2 class="mb-8 text-2xl text-center">Related items</h2>
+    
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            {% for item in related_items %}
+            <div class="flex flex-col items-center w-full">
+                <a href="{% url 'item:detail' item.id %}">
+                    <!-- Image container with explicit aspect ratio to prevent cut-off -->
+                    <div class="w-full aspect-[1/1] overflow-hidden">
+                        <img src="{{ item.image.url }}" class="object-cover w-full h-full rounded-t-xl" alt="{{ item.name }}">
+                    </div>
+                    <!-- Item details container with adjusted padding -->
+                    <div class="p-4 bg-white rounded-b-xl w-full">
+                        <h2 class="text-xl text-center">{{ item.name }}</h2>
+                        <p class="text-green-600 font-semibold text-center">Price: {{ item.price }}$</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    
+{% endblock %}

@@ -1,0 +1,60 @@
+# Ignore Python bytecode files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore the virtual environment folder
+venv/
+
+# Ignore environment variables and secrets
+.env
+*.env
+puddle/.env
+
+# Ignore Django migrations (optional)
+puddle/**/migrations/*.py
+!puddle/**/migrations/__init__.py
+
+# Ignore database files
+*.sqlite3
+db.sqlite3
+
+# Ignore compiled code
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore logs
+*.log
+logs/
+debug.log
+
+# Ignore media/uploads (if applicable)
+media/
+staticfiles/
+
+# Ignore system and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore JetBrains/PyCharm files
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Ignore coverage reports
+htmlcov/
+.coverage
+.tox/
+.nox/
+
+# Ignore pytest cache
+.pytest_cache/
+
+# Ignore Celery beat scheduler files
+celerybeat-schedule
