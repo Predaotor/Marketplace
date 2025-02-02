@@ -1,29 +1,34 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Inbox{%endblock%}
+{% block title %}Inbox{% endblock %}
 
 {% block content %}
 <h1 class="mb-6 text-3xl">Inbox</h1>
-<! -- This is the inbox page where the user can see all the conversations they are a part of -->
+<!-- This is the inbox page where the user can see all the conversations they are a part of -->
 
 <div class="space-y-6">
     {% for conversation in conversations %}
+    {% if conversation.messages.exists %}
     <a href="{% url 'conversation:detail' conversation.id %}">
-    <div class="p-6 flex bg-gray-100 rounded-xl">
+    <div class="p-6 flex {% if conversation.messages.last.created_by == request.user %} bg-blue-100 {% else %} bg-gray-100 {% endif %} rounded-xl">
         <div class="pr-6">
             <img src="{{ conversation.item.image.url }}" class="w-20 h-16 rounded-xl">
-            </div>
-            <div>
-                {% for member in conversation.members.all %}
-                {% if member != request.user %}
-                <p class="mb-4"><strong>{{ member.username }}</strong> @ {{conversation.modified_at}}</p>
-                <p>{{ conversation.content }}</p>
-                {% endif %}
-                {% endfor %}
         </div>
-            </div>
-        </a>
-        {% endfor %}
+        <div>
+            {% for member in conversation.members.all %}
+            {% if member != request.user %}
+            <p class="mb-4"><strong>{{ member.username }}</strong> @ {{ conversation.modified_at }}</p>
+            {% endif %}
+            {% endfor %}
+            <p>{{ conversation.content }}</p>
+            <form method="post" action="{% url 'conversation:delete' conversation.id %}">
+                {% csrf_token %}
+                <button type="submit" class="py-2 px-4 bg-red-500 hover:bg-red-700 text-white rounded-xl">Delete</button>
+            </form>
+        </div>
     </div>
-
+    </a>
+    {% endif %}
+    {% endfor %}
+</div>
 {% endblock %}

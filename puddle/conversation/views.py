@@ -16,7 +16,7 @@ def new_conversation(request, item_pk):
     conversations = Conversation.objects.filter(item=item).filter(members__in=[request.user.id])
 
     if conversations.exists():
-        return redirect('conversation:inbox', pk=conversations.first().id)
+        return redirect('conversation:detail', pk=conversations.first().id)
 
     if request.method == 'POST':
         form = ConversationMessageForm(request.POST)
@@ -41,6 +41,15 @@ def new_conversation(request, item_pk):
     return render(request, 'conversation/new.html', {
         'form': form
     })
+
+@login_required 
+def delete_message(request, pk):
+    message = get_object_or_404(ConversationMessage, pk=pk)
+    conversation = message.conversation
+    if request.user == message.created_by:
+        message.delete()
+    return redirect('conversation:detail', pk=conversation.id)
+
 
 # create function to view conversations
 @login_required 

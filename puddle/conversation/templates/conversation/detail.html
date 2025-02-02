@@ -11,6 +11,10 @@
        <div>
             <p class="mb-4"><strong>{{ message.created_by.username}}</strong> | {{message.created_at}}</p>
             <p>{{ message.content}}</p>
+            <form method="post" action="{% url 'conversation:delete' message.pk %}">
+                {% csrf_token %}
+                <button type="submit" class="py-2 px-4 bg-red-500 hover:bg-red-700 text-white rounded-xl">Delete</button>
+            </form>
         </div>
     </div>
     {% endfor %}
