@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import SignupForm, LoginForm
 # Create your views here.
 
+
+# show items on homepage
 def index(request):
     items=Item.objects.filter(is_sold=False)[0:6]
     categories=Category.objects.all()
@@ -12,13 +14,18 @@ def index(request):
         'items':items,
     })
 
+# redirect to contact page
 def contact(request):
     return render(request, "core/contact.html")
 
+
+# create sign up view function to handle sign up form
 def signup(request):
     if request.method=="POST":
        form=SignupForm(request.POST)
+       
 
+       # check if form is valid
        if form.is_valid():
            form.save()
 
@@ -30,10 +37,16 @@ def signup(request):
         "form":form
     })
 
+
+# create login view function to handle login form
 def login_view(request):
     if request.method=="POST":
         form=LoginForm(request.POST) 
+
+        # check if form is valid
         if form.is_valid():
+
+            # authenticate user
             username=form.cleaned_data["username"]
             password=form.cleaned_data["password"]
             user =authenticate(request, username=username, password=password)

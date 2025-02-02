@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
+# Create function to view dashboard
 @login_required 
 def index(request):
     items=Item.objects.filter(created_by=request.user)

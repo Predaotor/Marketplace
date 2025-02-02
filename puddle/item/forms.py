@@ -4,6 +4,10 @@ from .models import Item
 INPUT_CLASSES="w-full py-6 rounded-xl border"
 
 class NewItemform(forms.ModelForm):
+    """
+    NewItemform is a ModelForm for creating and updating Item instances.
+    
+    """
     class Meta:
         model=Item 
         fields=('category','name', 'description', 'price', 'image', )
@@ -29,6 +33,13 @@ class NewItemform(forms.ModelForm):
         
 
 class EditItemform(forms.ModelForm):
+    """
+    EditItemform is a ModelForm for editing an Item instance.
+    
+            model (Item): The model that this form is associated with.
+            fields (tuple): The fields to include in the form.
+            widgets (dict): A dictionary specifying custom widgets for each field.
+    """
     class Meta:
         model=Item 
         fields=('name', 'description', 'price', 'image', 'is_sold' )

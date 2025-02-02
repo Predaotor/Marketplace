@@ -5,7 +5,7 @@ from .forms import NewItemform, EditItemform
 from django.db.models import Q
 # Create your views here.
 
-
+# ✅ Create the browse view to search for items 
 def browse(request):
     categories = Category.objects.all()
     category_id = request.GET.get('category', None)
@@ -34,7 +34,7 @@ def browse(request):
 
 
 
-
+# ✅ Create the detail view to show the details of an item
 def detail(request, pk):
     item=get_object_or_404(Item, pk=pk)
     related_items=Item.objects.filter(category=item.category, is_sold=False).exclude(pk=pk)[0:3]
@@ -46,6 +46,7 @@ def detail(request, pk):
         "can_edit":can_edit
     })
 
+# ✅ Create the new view to create a new item
 @login_required
 def new(request):
     if request.method=="POST":
@@ -66,7 +67,7 @@ def new(request):
     }
     )
 
-
+# ✅ Create the delete view to delete an item
 @login_required 
 def delete(request, pk):
     item=get_object_or_404(Item, pk=pk, created_by=request.user)
@@ -74,6 +75,7 @@ def delete(request, pk):
 
     return redirect('dashboard:index')
 
+# ✅ Create the edit view to edit an item
 @login_required 
 def edit(request, pk):
     item=get_object_or_404(Item, pk=pk, created_by=request.user)

@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Category(models.Model):
+    # Define the Category model to represent a category of items.
     name=models.CharField(max_length=200)
 
     def __str__(self):
@@ -14,6 +15,8 @@ class Category(models.Model):
         verbose_name_plural='Categories'
 
 class Item(models.Model):
+
+    # Define the Item model to represent an item for sale.
     category=models.ForeignKey(Category, related_name='items', on_delete=models.CASCADE)
     name=models.CharField(max_length=200)
     description=models.TextField(blank=True, null=True)
