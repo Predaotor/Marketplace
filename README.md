@@ -38,22 +38,22 @@ Make sure you have the following installed:
    git clone https://github.com/Predaotor/Marketplace.git
    cd marketplace
 
-Install the required packages:
-pip install -r requirements.txt
+Build and Run the Docker Containers
+2. Build the Docker images:
+  docker-compose build
 
-Set up the database:
-python manage.py migrate
+3. Start the Docker containers:
+docker-compose up 
 
 
 Create a superuser (optional, for admin access):
 python manage.py createsuperuser
 
+4. Apply Migrations 
+ After the containers are up and running, apply the migrations:
+ docker-compose exec web python puddle/manage.py migrate
 
-Run the development server:
-bash  Copy codepython manage.py runserver
-
-
-Open your web browser and go to http://127.0.0.1:8000/.
+5. Open your web browser and go to http://127.0.0.1:8000/. 
 
 
 Usage
