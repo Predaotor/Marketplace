@@ -68,3 +68,12 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect("core:index")  # Redirect to homepage after logout
+
+#Terms of use 
+def terms(request):
+    return render(request, "core/terms.html")
+
+# about us 
+
+def about(request):
+    return render(request, "core/about.html")
