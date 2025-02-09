@@ -17,8 +17,8 @@ Welcome to the Marketplace Project! This is a web application built with Django 
 - Python
 - Django
 - SQLite (or your preferred database)
-- HTML/CSS
-- JavaScript
+- HTML/Tailwind
+
 
 ## Getting Started
 
