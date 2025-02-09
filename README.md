@@ -2,7 +2,7 @@
 
 # Marketplace Project
 
-Welcome to the Marketplace Project! This is a web application built with Django that allows users to register, upload, and sell their items. Users can view their items on a personal dashboard and manage their listings with ease.
+Welcome to the Marketplace Project! This is a web application built with Django that allows users to register, upload, and sell their items. Users can view their items on a personal dashboard and manage their listings with ease.    Users also can buy various products by contacting the seller directly to discuss the details and arrange the purchase.
 
 ## Features
 
