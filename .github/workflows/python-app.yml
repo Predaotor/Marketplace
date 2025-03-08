@@ -47,4 +47,8 @@ jobs:
       run: |
         python manage.py test core.tests conversation.tests dashboard.tests item.tests
       env:
-        DATABASE_PASSWORD: postgres
+        DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}} # The password for PostgreSQL, matching the password set in the service
+        DATABASE_HOST: localhost  # The host where PostgreSQL is running (inside the container)
+        DATABASE_PORT: 5432  # The port PostgreSQL is using
+        DATABASE_NAME: mydb  # The name of the database
+        DATABASE_USER: postgres
