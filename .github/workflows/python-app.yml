@@ -34,4 +34,4 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
     - name: Test with django TestCase
       run: |
-        python manege.py test core.tests conversation.tests dashboard.tests item.tests
+        python manage.py test core.tests conversation.tests dashboard.tests item.tests
