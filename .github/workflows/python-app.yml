@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:latest
+        image: postgres:db
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}  # Use GitHub secrets for sensitive data
@@ -55,7 +55,7 @@ jobs:
         python manage.py test core.tests conversation.tests dashboard.tests item.tests
       env:
         DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}  # Make sure to set this in GitHub secrets
-        DATABASE_HOST: db  # Use localhost if PostgreSQL service is on the same machine in GitHub Actions
+        DATABASE_HOST: localhost  # Use localhost if PostgreSQL service is on the same machine in GitHub Actions
         DATABASE_PORT: 5432
         DATABASE_NAME: postgres
         DATABASE_USER: postgres
