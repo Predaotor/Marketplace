@@ -57,5 +57,5 @@ jobs:
         DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}  # Make sure to set this in GitHub secrets
         DATABASE_HOST: db  # Use localhost if PostgreSQL service is on the same machine in GitHub Actions
         DATABASE_PORT: 5432
-        DATABASE_NAME: mydb
+        DATABASE_NAME: postgres
         DATABASE_USER: postgres
