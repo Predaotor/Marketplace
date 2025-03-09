@@ -42,13 +42,16 @@ jobs:
         # stop the build if there are Python syntax errors or undefined names
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+    - name: Wait for Postgres to be ready
+      run: dockerize -wait tcp://postgres:5432 -timeout 1m
+    
     - name: Test with django TestCase
       working-directory: puddle 
       run: |
         python manage.py test core.tests conversation.tests dashboard.tests item.tests
       env:
         DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}} # The password for PostgreSQL, matching the password set in the service
-        DATABASE_HOST: localhost  # The host where PostgreSQL is running (inside the container)
+        DATABASE_HOST: db  # The host where PostgreSQL is running (inside the container)
         DATABASE_PORT: 5432  # The port PostgreSQL is using
         DATABASE_NAME: mydb  # The name of the database
         DATABASE_USER: postgres

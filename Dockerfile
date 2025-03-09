@@ -7,8 +7,7 @@ ENV PYTHONUNBUFFERED 1
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
-    sqlite3 \
-    libsqlite3-dev \
+    libpq-dev \
     gcc \
     build-essential
 

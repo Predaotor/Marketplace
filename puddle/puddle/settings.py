@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'mydb',
         'USER':'postgres',
         'PASSWORD':os.environ.get('DATABASE_PASSWORD'),
-        'HOST':'localhost',
+        'HOST':'db',
         'PORT':'5432',
     }
 }
@@ -129,6 +129,7 @@ LOGOUT_REDIRECT_URL = "/"  # Redirects to home after logout
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT=os.path.join(BASE_DIR,'static')
 MEDIA_URL='media/'
 MEDIA_ROOT=BASE_DIR / 'media'
 LOGIN_URL="/login/"

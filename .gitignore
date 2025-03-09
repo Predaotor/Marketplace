@@ -10,7 +10,7 @@ venv/
 .env
 *.env
 puddle/.env
-
+admin/
 # Ignore Django migrations (optional)
 puddle/**/migrations/*.py
 !puddle/**/migrations/__init__.py
