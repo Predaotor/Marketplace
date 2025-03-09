@@ -16,6 +16,8 @@ jobs:
       postgres:
         image: postgres:latest
         env:
+          ENGINE: django.db.backends.postgresql
+          NAME: postgres
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}  # Use GitHub secrets for sensitive data
           POSTGRES_DB: mydb
