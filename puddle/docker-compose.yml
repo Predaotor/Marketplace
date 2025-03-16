@@ -1,15 +1,18 @@
+version: '3.8'
+
 services:
   web:
     build: .
-    command: python puddle/manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/app
     ports:
       - "8000:8000"
     depends_on:
       - db
     env_file:
-      - .env
+      - .env # Ensure this path is correct
+    volumes:
+      - .:/app # Mount current directory to /app in container
+    entrypoint: /entrypoint.sh # Use entrypoint script
+
   db:
     image: postgres:latest
     environment:
