@@ -84,13 +84,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mydb',
-        'USER':'postgres',
-        'PASSWORD':os.environ.get('DATABASE_PASSWORD'),
-        'HOST':'db',
-        'PORT':'5432',
+        'USER': 'postgres',
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
+        'HOST': '34.118.91.117',  # Cloud SQL Public IP
+        'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

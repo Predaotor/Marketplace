@@ -1,6 +1,6 @@
 FROM python:3.10.11
 
-EXPOSE 8000
+EXPOSE 8080
 
 # Prevent Python from writing .pyc files and set unbuffered output
 ENV PYTHONDONTWRITEBYTECODE=1
