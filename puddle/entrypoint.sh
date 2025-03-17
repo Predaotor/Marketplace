@@ -9,4 +9,4 @@ python manage.py migrate --noinput
 
 
 echo "Starting Gunicorn..."
-exec gunicorn --workers 3 --bind 0.0.0.0:${PORT:-8080} puddle.wsgi:application
+exec gunicorn --workers 3 --bind 0.0.0.0:${PORT:-4000} puddle.wsgi:application
