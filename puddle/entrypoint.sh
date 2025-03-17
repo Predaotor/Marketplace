@@ -2,7 +2,11 @@
 
 # Exit immediately if a command exits with a non-zero status
 set -e
+echo "Starting Cloud SQL Auth Proxy..."
+# Start Cloud SQL Auth Proxy in the background
+/cloud_sql_proxy -dir=/cloudsql -instances="cool-artwork-445504:europe-central2:postgre123" &
 
+sleep 5
 
 echo "Running migrations..."
 python manage.py migrate --noinput
