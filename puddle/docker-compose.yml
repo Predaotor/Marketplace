@@ -11,5 +11,5 @@ services:
       - .:/app # Mount current directory to /app in container
     entrypoint: /entrypoint.sh # Use entrypoint script
     environment:
-      DATABASE_URL: "postgres://postgres:${DATABASE_PASSWORD}@/mydb?host=/cloudsql/cool-artwork-445504:europe-central2:postgre123"
-    command: gunicorn --workers 3 --bind 0.0.0.0:10000 puddle.wsgi
+      DATABASE_URL: "postgres://postgres:${DATABASE_PASSWORD}@/mydb?host=europe-central2:postgre123"
+    command: gunicorn --workers 3 --bind 0.0.0.0:4000 puddle.wsgi
