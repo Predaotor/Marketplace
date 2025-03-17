@@ -86,8 +86,8 @@ DATABASES = {
         'NAME': 'mydb',
         'USER': 'postgres',
         'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
-        'HOST': '/cloudsql/cool-artwork-445504-h9:europe-central2:postgre123',  # Cloud SQL Public IP
-        'PORT': '',
+        'HOST': '34.116.207.43',  # Cloud SQL Public IP
+        'PORT': '5432',
     }
 }
 
