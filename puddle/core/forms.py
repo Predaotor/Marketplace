@@ -52,4 +52,13 @@ class SignupForm(UserCreationForm):
         "placeholder":"Repeat password",
         "class":"w-full py-4 px-4 rounded-xl"
     }))
+    
+    def save(self, commit=True):
+        user=super().save(commit=False)
+        user.email=self.cleaned_data["email"]
+        if commit:
+            user.save()
+        return user
+    
+        
 

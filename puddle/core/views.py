@@ -32,6 +32,8 @@ def signup(request):
            return redirect("/login/")
     else:
        form=SignupForm() 
+       print(form.errors) # Useful for debugging in development 
+       
 
     return render(request, "core/signup.html", {
         "form":form
