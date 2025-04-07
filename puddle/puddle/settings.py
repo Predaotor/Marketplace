@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-y%e#o8p=5m^*&e)-luixciq_ic!%%tt51(2lpx3=%9z&f+l=t9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['34.118.21.207', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -83,10 +83,10 @@ load_dotenv()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydb',
+        'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
-        'HOST': 'localhost',  # Cloud SQL Public IP
+        'HOST': os.environ.get('DATABASE_HOST'),  # Cloud SQL Public IP
         'PORT': '5432',
     }
 }
